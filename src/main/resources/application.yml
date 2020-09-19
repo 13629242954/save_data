@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: absapp
+  profiles:
+    active:
+      default
+#  cloud:
+#    config:
+#      enabled: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/save_data?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&nullCatalogMeansCurrent=true&allowPublicKeyRetrieval=true&rewriteBatchedStatements=TRUE&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    hikari:
+      max-lifetime: 3600000
+mybatis:
+  mapper-locations: com/zhang/data/save_data/moudles/base/mapper/xml/PeopleMapper.xml
+  type-aliases-package: com.xx.xxx.model
+  configuration:
+    cache-enabled: false
+#signing: 
+#  key: 345345fsdgsf5345
+  
+server:
+  contextPath: /absapp
+  port: 8085
+  
+freemarker:
+  request-context-attribute: req  #req访问request
+  suffix: .ftl  #后缀名
+  content-type: text/html
+  enabled: true
+  cache: false #缓存配置
+  template-loader-path: classpath:templates/ #模板加载路径 按需配置
+  charset: UTF-8 #编码格式
+  settings:
+    number_format: '0.##'   #数字格式化，无小数点
+
+#security:
+#  oauth2:
+#    resource:
+#       userInfoUri: http://localhost:8901/auth/user
+
+#Setting the logging levels for the service
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.thoughtmechanix: DEBUG
+    cn.azservice.absapp: DEBUG
+
+#eureka:
+#  instance:
+#    preferIpAddress: true
+#  client:
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    serviceUrl:
+#        defaultZone: http://localhost:8761/eureka/
+
+

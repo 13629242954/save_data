@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhang.data.save_data.moudles.base.mapper.PeopleMapper">
+
+	<sql id="sysPeople">
+		a.id AS "id",
+		a.name AS "name",
+		a.age AS "age",
+		a.phone AS "phone",
+		a.id_card AS "idCard",
+		a.org_id AS "orgId",
+		a.create_date AS "createDate",
+		a.create_user AS "createUser"
+	</sql>
+	<insert id="saveDatePeopleBatch" parameterType="java.util.List">
+		insert into sys_people (id, name, age, phone, id_card, create_date,create_user,org_id) values
+		<foreach collection="data" index="index" item="item" separator="," >
+			( #{item.id}, #{item.name}, #{item.age}, #{item.phone}, #{item.idCard}, #{item.createDate}, #{item.createUser}, #{item.orgId})
+		</foreach>
+	</insert>
+</mapper>
